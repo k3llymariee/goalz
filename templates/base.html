@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}title goes here{% endblock %}</title>
+
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <!-- Show flashed messages -->
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              ✨ {{ message }}
+              </button>
+            </div>
+        {% endfor %}
+    {% endwith %}
+    {% block content %}body content goes here{% endblock %}
+
+</body>
+<footer>
+    {% if session.get('user_id') %}
+    <a href="/logout">Logout</a>
+    {% endif %}
+</footer>
+</html>

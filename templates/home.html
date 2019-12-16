@@ -1,1 +1,25 @@
-Hello, world!
+{% extends 'base.html' %}
+{% block title %}Goals!{% endblock %}
+
+{% block content %}
+    <h1>Your goals:</h1>
+    <p>Your goals will go here.</p>
+    <h2>Requirements:</h2>
+    <p>Write a web application that allows users to view, save, and edit goals they want to achieve. Users should be able to log in. They should only be able to see their own goals.</p>
+
+    <p>You are free to use any tech stack. Please include a README with installation instructions so that we’re able to run your code.</p>
+
+<div class="container" id="manual-add">
+    <h1>Add a new goal:</h1>
+
+    <form id="new_goal" action="/api/goal" method="POST">
+        <div class="row">
+            <div class="col">
+                <label for="goal_description">Describe your goal</label><br>
+                <textarea class="form-control" id="goal_description" name="goal_description" rows="4" size="600" required></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add new goal!</button>
+    </form>
+
+{% endblock %}
