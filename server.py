@@ -88,7 +88,24 @@ def process_logout():
     return redirect("/register")
 
 
-@app.route('/api/goal', methods=['POST'])
+@app.route('/api/goals', methods=['GET'])
+def read_goals():
+    """Returns a list of goals for the logged in user"""
+
+    user_id = session['user_id']
+    goal_query = Goal.query.filter(Goal.user_id == user_id).all()
+
+    goals = []
+    for goal in goal_query:
+        goals.append({'goal_id': goal.id, 'description': goal.description})
+
+    print('\n\n\n\n')
+    print('GOALS', goals)
+
+    return jsonify(goals)
+
+
+@app.route('/api/goals', methods=['POST'])
 def add_goal():
     """Adds a new goal to the database for the logged in user"""
 

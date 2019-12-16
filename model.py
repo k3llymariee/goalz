@@ -37,7 +37,7 @@ class Goal(db.Model):
     description = db.Column(db.Text)
 
 
-    def __repr__():
+    def __repr__(self):
         return f'<Goal id={self.id}>'
 
 

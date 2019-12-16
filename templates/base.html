@@ -8,6 +8,8 @@
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous">
     </script>
+
+    <link rel="shortcut icon" href="/static/favicon.png">
 </head>
 <body>
     <!-- Show flashed messages -->
@@ -20,6 +22,10 @@
         {% endfor %}
     {% endwith %}
     {% block content %}body content goes here{% endblock %}
+    
+    <!-- Include any page-specific Javascript using this block. -->
+    {% block js %}
+    {% endblock %}
 
 </body>
 <footer>
