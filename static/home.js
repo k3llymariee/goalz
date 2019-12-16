@@ -5,8 +5,6 @@ const getGoals = () => {
 };
 
 const insertGoals = (res) => {
-    // Once the data has been provided by the server,
-    // insert it into the page as an HTML string.
 
     const listOfGoals = res;
     const container = $('#existing_goals');
@@ -17,21 +15,22 @@ const insertGoals = (res) => {
         container.append(`No goals to show`)
     }
 
-    container.append('<p><i>Clicking on a goal will allow you to edit or delete the goal</i></p>')
+    else {container.append('<p><i>Clicking on a goal will allow you to edit or delete the goal</i></p>')
 
-    for (const goal of listOfGoals) {
-        container.append(
-            `<li> <span id=${goal.goal_id}>${goal.description}</span>`
-        )
+        for (const goal of listOfGoals) {
+            container.append(
+                `<li> <span id=${goal.goal_id}>${goal.description}</span>`
+            )
 
-        $(`#${goal.goal_id}`).on('click', (evt) => {
-        
-            evt.preventDefault();
+            $(`#${goal.goal_id}`).on('click', (evt) => {
+            
+                evt.preventDefault();
 
-            // alert('you clicked me!')
-            $('#goal_description').val(goal.description)
-            $('#goal_id').val(goal.goal_id)
-        })
+                // alert('you clicked me!')
+                $('#goal_description').val(goal.description)
+                $('#goal_id').val(goal.goal_id)
+            })
+        }
     }
 };
 
@@ -60,7 +59,7 @@ $('#update_goal').on('click', (evt) => {
     $.post('/api/goals/update', formInputs, (res) => {
         alert(res);
         getGoals();
-        // no clear form here in case the user wants to update the same goal again!
+        // no clearForm here in case the user wants to update the same goal again!
     });
 });
 
