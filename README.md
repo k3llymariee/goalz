@@ -19,20 +19,20 @@ To get this up & running on your local computer, please follow the steps below:
 ```$ git clone https://github.com/k3llymariee/hackbright-take-home.git```
 
 2. Create & activate a virtual environment 🤖 <br>
-```virtualenv venv``` <br>
-```source venv/bin/activate```
+```$ virtualenv venv``` <br>
+```$ source venv/bin/activate```
 
 3. Install dependencies 🖇️ <br>
-```pip3 install -r requirements.txt```
+```$ pip3 install -r requirements.txt```
 
 4. Create a database `goals` 💫<br>
-```createdb goals```
+```$ createdb goals```
 
 5. Create the DB tables 💾<br>
-```python3 -i model.py```<br>
+```$ python3 -i model.py```<br>
 ```>>> db.create_all()```
 
 6. Run the app from the command line 💻<br>
-```python3 server.py```
+```$ python3 server.py```
 
-7. You can now navigate to 'localhost:5000/' to access GOALZ 🎉
+7. You can now navigate to `localhost:5000/` to access GOALZ 🎉
