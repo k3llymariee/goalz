@@ -93,7 +93,9 @@ def read_goals():
     """Returns a list of goals for the logged in user"""
 
     user_id = session['user_id']
-    goal_query = Goal.query.filter(Goal.user_id == user_id).all()
+    goal_query = Goal.query.filter(Goal.user_id == user_id) \
+                           .order_by(Goal.id) \
+                           .all()
 
     goals = []
     for goal in goal_query:
@@ -117,6 +119,34 @@ def add_goal():
     db.session.commit()
 
     return "New goal has been added!"
+
+
+@app.route('/api/goals/update', methods=['POST'])
+def update_goal():
+    """Updates an existing goal to the database for the logged in user"""
+
+    user_id = session['user_id']
+    description = request.form.get('goal_description')
+    goal_id = request.form.get('goal_id')
+
+    existing_goal = Goal.query.get(goal_id)
+    existing_goal.description = description
+    db.session.commit()
+
+    return "Goal has been updated!"
+
+@app.route('/api/goals/delete', methods=['POST'])
+def delete_goal():
+    """Deletes an existing goal to the database for the logged in user"""
+
+    user_id = session['user_id']
+    goal_id = request.form.get('goal_id')
+
+    existing_goal = Goal.query.get(goal_id)
+    db.session.delete(existing_goal)
+    db.session.commit()
+
+    return "Goal has been deleted!"
 
 
 if __name__ == '__main__':

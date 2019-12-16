@@ -2,13 +2,6 @@
 {% block title %}Goals!{% endblock %}
 
 {% block content %}
-    <h1>Your goals:</h1>
-    <p>Your goals will go here.</p>
-    <h2>Requirements:</h2>
-    <p>Write a web application that allows users to view, save, and edit goals they want to achieve. Users should be able to log in. They should only be able to see their own goals.</p>
-
-    <p>You are free to use any tech stack. Please include a README with installation instructions so that we’re able to run your code.</p>
-
 <div class="container">
     <form id="new_goal" action="/api/goal" method="POST">
         <div class="row">
@@ -21,6 +14,7 @@
         <button id="add_goal" type="submit" class="btn btn-primary">Add</button>
         <button id="update_goal">Update</button>
         <button id="delete_goal">Delete</button>
+        <button id="reset_goal">Reset</button>
     </form><br>
     <div id="existing_goals"></div>
 </div>
